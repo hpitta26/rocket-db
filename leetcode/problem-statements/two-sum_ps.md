@@ -49,3 +49,15 @@ Output: [0,1]
 3. A more optimal approach is to use a hash table to reduce the lookup time.
 4. For each element, check if its complement (target - nums[i]) exists in the hash table.
 5. If not, add the current element to the hash table for future lookups.
+
+## Function Signature
+
+```
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+```

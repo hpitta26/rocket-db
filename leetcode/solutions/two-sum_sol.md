@@ -13,13 +13,19 @@ The most straightforward approach is to check all possible pairs of numbers in t
 #### Space Complexity: O(1)
 
 ```python
-def twoSum(nums, target):
-    n = len(nums)
-    for i in range(n):
-        for j in range(i + 1, n):
-            if nums[i] + nums[j] == target:
-                return [i, j]
-    return []  # No solution found
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        n = len(nums)
+        for i in range(n):
+            for j in range(i + 1, n):
+                if nums[i] + nums[j] == target:
+                    return [i, j]
+        return []  # No solution found
 ```
 
 ### 2. Two-Pass Hash Table Approach
@@ -30,21 +36,27 @@ Build a hash map in the first pass, then look for complements in the second pass
 #### Space Complexity: O(n)
 
 ```python
-def twoSum(nums, target):
-    # Create a hash map to store numbers and their indices
-    num_map = {}
-    
-    # First pass: Build the hash map
-    for i, num in enumerate(nums):
-        num_map[num] = i
-    
-    # Second pass: Check for complements
-    for i, num in enumerate(nums):
-        complement = target - num
-        if complement in num_map and num_map[complement] != i:
-            return [i, num_map[complement]]
-    
-    return []  # No solution found
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        # Create a hash map to store numbers and their indices
+        num_map = {}
+        
+        # First pass: Build the hash map
+        for i, num in enumerate(nums):
+            num_map[num] = i
+        
+        # Second pass: Check for complements
+        for i, num in enumerate(nums):
+            complement = target - num
+            if complement in num_map and num_map[complement] != i:
+                return [i, num_map[complement]]
+        
+        return []  # No solution found
 ```
 
 ### 3. One-Pass Hash Table Approach (Optimal)
@@ -55,26 +67,31 @@ We can combine the two passes into one by checking for the complement as we buil
 #### Space Complexity: O(n)
 
 ```python
-def twoSum(nums, target):
-    # Create a hash map to store numbers and their indices
-    num_map = {}
-    
-    # Iterate through the array
-    for i, num in enumerate(nums):
-        # Calculate the complement
-        complement = target - num
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        # Create a hash map to store numbers and their indices
+        num_map = {}
         
-        # Check if the complement exists in the hash map
-        if complement in num_map:
-            # Return the indices of the two numbers
-            return [num_map[complement], i]
+        # Iterate through the array
+        for i, num in enumerate(nums):
+            # Calculate the complement
+            complement = target - num
+            
+            # Check if the complement exists in the hash map
+            if complement in num_map:
+                # Return the indices of the two numbers
+                return [num_map[complement], i]
+            
+            # Add the current number and its index to the hash map
+            num_map[num] = i
         
-        # Add the current number and its index to the hash map
-        num_map[num] = i
-    
-    return []  # No solution found
+        return []  # No solution found
 ```
-
 
 ## Key Insights
 
