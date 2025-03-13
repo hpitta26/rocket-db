@@ -1,3 +1,3 @@
 # 🚀 Rocket-db
 
-Structured db of Programming problems and Solutions.
+Structured db of Programming problems and their Solutions.
